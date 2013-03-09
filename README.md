@@ -4,12 +4,11 @@
 
 The `bootstrap-x-editable-rails` gem integrates `X-editable` with Rails asset pipeline. This gem only supports the Bootstrap part of X-editable. The Modified Version provides a hack to the original AJAX request on update, to suit the rails way .
 
-For example, if you have a DOM ``<a href="#" id="content"><%= @album.content %></a>``, when update, AJAX request sends the updated value as below. (Note that value in 'name' is extracted from DOM id).
-``{"name"=>"content","value"=>"it's great"}``
+For example, if you have a DOM ``<a href="#" id="content"><%= @album.content %></a>``, when update, AJAX request sends the updated value as: ``{"name"=>"content","value"=>"it's great"}`` (Note that value in 'name' is from DOM id)
 
-However, in rails, we want to send a model object instead, eg. ``{"album"=> {"content"=>"it's great"}}``, so we can store data in rails as: `` @album = update_attributes(@params[:album]) ``
+However, in rails, we want to send a model object instead, eg. ``{"album"=> {"content"=>"it's great"}}``, so we can store data in rails as simple as: `` @album = update_attributes(@params[:album]) ``
 
-In the new code, DOM id should be named as "model_column", eg. for an 'Album' model with 'Content' column =>  id="album_content". If not using this format, it will use original AJAX request format.
+In this version, DOM id is named as "model_column", eg. for an 'Album' model with 'Content' column =>  id="album_content". If not using this format, it will use original AJAX request format.
 
 ## Usage
 
