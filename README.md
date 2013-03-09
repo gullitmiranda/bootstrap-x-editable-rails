@@ -8,7 +8,7 @@ For example, if you have a DOM ``<a href="#" id="content"><%= @album.content %><
 
 However, in rails, we want to send a model object instead, eg. ``{"album"=> {"content"=>"it's great"}}``, so we can store data in rails as simple as: `` @album.update_attributes(@params[:album]) ``
 
-In this version, DOM id is named as "model_column", eg. for an 'Album' model with 'Content' column =>  id="album_content". If not using this format, it will use original AJAX request format.
+In this version, DOM id is named as "model-column", eg. for an 'Album' model with 'Content' column =>  id="album-content". If not using this format, it will use original AJAX request format.
 
 ## Usage
 

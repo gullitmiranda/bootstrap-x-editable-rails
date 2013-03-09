@@ -275,7 +275,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                 this.showLoading();
 
                 //standard params
-                var data_to_send = this.options.name.split('_');
+                var data_to_send = this.options.name.split('-');
                 if (data_to_send.length == 2){
                     var model = data_to_send[0];
                     var column = data_to_send[1];
