@@ -275,11 +275,22 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                 this.showLoading();
 
                 //standard params
-                params = {
-                    name: this.options.name || '',
-                    value: submitValue,
-                    pk: pk 
-                };
+                var data_to_send = this.options.name.split('_');
+                if (data_to_send.length == 2){
+                    var model = data_to_send[0];
+                    var column = data_to_send[1];
+                    params = {};
+                    var temporary = {};
+                    temporary[column] = submitValue;
+                    params[model] = temporary;
+                }
+                else{
+                    params = {
+                        name: this.options.name || '',
+                        value: submitValue,
+                        pk: pk 
+                    };                   
+                }
 
                 //additional params
                 if(typeof this.options.params === 'function') {
