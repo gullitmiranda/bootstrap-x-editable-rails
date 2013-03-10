@@ -14,6 +14,8 @@ task :update do
   system("cp #{dist_path}/css/bootstrap-editable.css vendor/assets/stylesheets/bootstrap-editable.scss")
   system("cp #{dist_path}/js/bootstrap-editable.js vendor/assets/javascripts/")
 
+  system("patch -p0 -i vendor/bootstrap-editable.patch")
+
   fixes
 
   system("rm -rf x-editable-src")
