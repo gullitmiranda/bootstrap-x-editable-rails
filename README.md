@@ -2,13 +2,17 @@
 
 [X-editable](https://github.com/vitalets/x-editable) is an in-place editing plugin with support for Twitter Bootstrap, jQuery UI or pure jQuery.
 
-The `bootstrap-x-editable-rails` gem integrates `X-editable` with Rails asset pipeline. This gem only supports the Bootstrap part of X-editable. The Hacked Version changes the AJAX request on update, to suit rails way.
+The `bootstrap-x-editable-rails` gem integrates `X-editable` with Rails asset pipeline. This gem only supports the Bootstrap part of X-editable. 
 
-For example, if you have a DOM ``<a href="#" id="content"><%= @album.content %></a>``, when update, AJAX request sends the updated value as: ``{"name"=>"content","value"=>"it's great"}`` (Note that value in 'name' is from DOM id)
+## New in Hacked Version 
 
-However, in rails, we want to send a model object instead, eg. ``{"album"=> {"content"=>"it's great"}}``, so we can store data in rails as simple as: `` @album.update_attributes(@params[:album]) ``
+This Version changes the AJAX request on update, to suit rails way.
 
-In this version, DOM id is named as "model-column", eg. for an 'Album' model with 'Content' column =>  id="album-content". If not using this format, it will use original AJAX request format.
+For example, if you have a DOM ``<a href="#" id="content"><%= @album.content %></a>``, when update, AJAX request sends: ``{"name"=>"content","value"=>"it's great"}``
+
+However, in rails, we want model object instead, eg. ``{"album"=> {"content"=>"it's great"}}``, so we can update in rails as: `` @album.update_attributes(@params[:album]) ``
+
+In this version, DOM id is named as "model-column", eg. for 'Album' model with 'Content' column =>  ``id="album-content"``. If not using '-', original format will be used.
 
 ## Usage
 
@@ -38,7 +42,7 @@ Add to your `app/assets/stylesheets/application.css`
 
     *= require bootstrap-editable
 
-## Additional Support in Hacked Version
+## Added in Hacked Version
 
 ### View helper
 
