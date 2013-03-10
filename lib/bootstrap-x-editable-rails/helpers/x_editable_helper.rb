@@ -2,18 +2,17 @@ module XEditableHelper
 
   # support restful update url
   def xeditable(url, type, model, column, value, options = {})
-    option_attributes = ' '
+    options_hash = {}
     options.each do |key, value|
-      option_attributes += "data-#{key}='#{value}' "
+      options_hash.merge!({("data-"+(key.to_s)).to_sym => value})
     end
     pk = url.split('/')[-1]
     id = "#{model}-#{column}-#{pk}"
-    html = "<a href='#' id='#{id}' data-type='#{type}' data-pk='#{pk}' data-url='#{url}' "
-    html += option_attributes
-    html += ">#{value}</a>"
-    html += "<script>$(document).ready(function(){$('##{id}').editable("
-    html += "{ajaxOptions: {type: 'put',dataType:'json'}})})</script>"
-    html.html_safe
+    attributes_hash = {"data-type" => type, "data-pk" => pk, "data-url" => url, "id" => id}.merge!(options_hash)
+    link = link_to(value, '#', attributes_hash)
+    script = "<script>$(document).ready(function(){$('##{id}').editable("
+    script += "{ajaxOptions: {type: 'put',dataType:'json'}})})</script>"
+    return link+(script.html_safe)
   end
 
 end
