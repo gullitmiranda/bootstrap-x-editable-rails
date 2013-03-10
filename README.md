@@ -38,6 +38,31 @@ Add to your `app/assets/stylesheets/application.css`
 
     *= require bootstrap-editable
 
+## Additional Support in Hacked Version
+
+### View helper
+
+This is use to simplify the html and jquery used in xeditable
+
+Originally, to generate a editable view for model 'album' and column 'content', you need to do following:
+
+    <a href="#" id="album-content" data-type="text" data-pk="1" data-url="<%= album_path(@album) %>" data-original-title="Enter content">@album.content</a>
+
+    $(document).ready(function(){
+    	$('#album-content').editable({
+			ajaxOptions:{
+				type: 'put',
+				dataType: 'json'
+			}
+    	});
+    });
+
+This code provides a helper, ``xeditable(url, type, model, column, value, options = {})`` . By using the helper, all you have to do is:
+
+	<%= xeditable(album_path(@album),'text', 'album', 'content', @album.content, {:original-title => 'Enter Content'}) %>
+
+Note that, since there are many optional attributes in xeditable, additional types can be used in putting in option hash, eg. original-title as above. 
+
 ## Updating the gem
 There are two rake tasks designed to ease the maintenance of this gem.
 
