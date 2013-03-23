@@ -2,9 +2,9 @@
 
 [X-editable](https://github.com/vitalets/x-editable) is an in-place editing plugin with support for Twitter Bootstrap, jQuery UI or pure jQuery.
 
-The `bootstrap-x-editable-rails` gem integrates `X-editable` with Rails asset pipeline. This gem only supports the Bootstrap part of X-editable. 
+The `bootstrap-x-editable-rails` gem integrates `X-editable` with Rails asset pipeline. This gem only supports the Bootstrap part of X-editable.
 
-## New in Hacked Version 
+## New in Hacked Version
 
 This Version changes the AJAX request on update, to suit rails way.
 
@@ -63,9 +63,9 @@ Originally, to generate a editable view for model 'album' and column 'content', 
 
 This code provides a helper, ``xeditable(url, type, model, column, value, options = {})`` . By using the helper, all you have to do is:
 
-	<%= xeditable(album_path(@album),'text', 'album', 'content', @album.content, {:original-title => 'Enter Content'}) %>
+	<%= xeditable(album_path(@album),'text', 'album', 'content', @album.content, {:'original-title' => 'Enter Content'}) %>
 
-Note that, since there are many optional attributes in xeditable, additional types can be used in putting in option hash, eg. original-title as above. 
+Note that, since there are many optional attributes in xeditable, additional types can be used in putting in option hash, eg. original-title as above.
 
 ## Updating the gem
 There are two rake tasks designed to ease the maintenance of this gem.
@@ -73,7 +73,7 @@ There are two rake tasks designed to ease the maintenance of this gem.
 The `update` task pulls the latest X-editable code from github and places images, stylesheets and javascripts in the correct gem paths. It also changes background-image properties in the stylesheet to asset pipeline equivalents.
 
 	rake update
-	
+
 The `build` task is a simple wrapper for `gem build`
-	
+
 	rake build
