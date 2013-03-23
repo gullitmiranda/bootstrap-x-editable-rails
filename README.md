@@ -53,12 +53,15 @@ Originally, to generate a editable view for model 'album' and column 'content', 
     <a href="#" id="album-content" data-type="text" data-pk="1" data-url="<%= album_path(@album) %>" data-original-title="Enter content">@album.content</a>
 
     $(document).ready(function(){
-    	$('#album-content').editable({
-			ajaxOptions:{
-				type: 'put',
-				dataType: 'json'
-			}
-    	});
+        $('#album-content').editable({
+            ajaxOptions:{
+                type: 'put',
+                dataType: 'json'
+            },
+            success: function(response, newValue) {
+                if(!response.success) alert(response.msg);
+            }
+        });
     });
 
 This code provides a helper, ``xeditable(url, type, model, column, value, options = {})`` . By using the helper, all you have to do is:
@@ -66,6 +69,8 @@ This code provides a helper, ``xeditable(url, type, model, column, value, option
 	<%= xeditable(album_path(@album),'text', 'album', 'content', @album.content, {:'original-title' => 'Enter Content'}) %>
 
 Note that, since there are many optional attributes in xeditable, additional types can be used in putting in option hash, eg. original-title as above.
+
+Also note that, in backend, you should response with something like ``render :json => {:success => true}`` or ``render :json => {:success => false, :msg => 'something is wrong'}``
 
 ## Updating the gem
 There are two rake tasks designed to ease the maintenance of this gem.
