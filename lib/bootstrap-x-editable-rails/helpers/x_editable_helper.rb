@@ -3,8 +3,8 @@ module XEditableHelper
   # support restful update url
   def xeditable(url, type, model, column, value, options = {})
     options_hash = {}
-    options.each do |key, value|
-      options_hash.merge!({("data-"+(key.to_s)).to_sym => value})
+    options.each do |k, v|
+      options_hash.merge!({("data-"+(k.to_s)).to_sym => v})
     end
     pk = url.split('/')[-1]
     id = "#{model}-#{column}-#{pk}"
