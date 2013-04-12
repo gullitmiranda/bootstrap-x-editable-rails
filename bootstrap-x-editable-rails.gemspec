@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/bootstrap-x-editable-rails/version', __FILE__)
+$:.unshift File.expand_path("../lib", __FILE__)
+require "bootstrap-x-editable-rails/version" 
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Per Andersson"]
