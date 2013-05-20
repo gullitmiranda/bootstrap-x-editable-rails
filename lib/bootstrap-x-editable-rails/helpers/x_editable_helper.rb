@@ -7,7 +7,7 @@ module XEditableHelper
       options_hash.merge!({("data-"+(k.to_s)).to_sym => v})
     end
     pk = url.split('/')[-1]
-    id = "#{model}-#{column}-#{pk}"
+    id = "#{model}_#{column}_#{pk}"
     attributes_hash = {"data-type" => type, "data-pk" => pk, "data-url" => url, "id" => id}.merge!(options_hash)
     link = link_to(value, '#', attributes_hash)
     script = "<script>$(document).ready(function(){$('##{id}').editable("
